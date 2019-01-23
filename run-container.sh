@@ -11,5 +11,5 @@ docker run -it \
        -e AWS_ACCESS_KEY_ID=$AWS_KUBE_ACCESS_KEY_ID \
        -e AWS_SECRET_ACCESS_KEY=$AWS_KUBE_SECRET_ACCESS_KEY \
        -e AWS_DEFAULT_REGION=$AWS_KUBE_DEFAULT_REGION \
-        k8s-client \
+        davesnowdon/k8s-client \
        /bin/bash

@@ -15,7 +15,7 @@ Set the following environment variables to the AWS credentials you are going to 
 * AWS_KUBE_SECRET_ACCESS_KEY
 * AWS_KUBE_DEFAULT_REGION
 
-Build the container by running
+OPTIONAL: Build the container by running. The run-container.sh script will use the latest container hosted on hub.docker.com so you don't need to build a local copy of the container unless you want to.
 
     ./make-container.sh
 

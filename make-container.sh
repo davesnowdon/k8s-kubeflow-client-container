@@ -6,6 +6,7 @@ KSONNET_TAG=v${KSONNET_VERSION}
 KUBEFLOW_TAG=v0.4.0
 TERRAFORM_VERSION=0.11.11
 
+mkdir -p downloads
 if [ ! -f downloads/cfssl ]; then
     wget -q --show-progress --https-only --timestamping \
         https://pkg.cfssl.org/R1.2/cfssl_linux-amd64 \
