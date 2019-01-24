@@ -124,5 +124,4 @@ The terraform EKS example creates an auto-scaling group with 2 worker nodes. If 
 To remove all resources you can use `terraform destroy`
 
     cd /opt/data/terraform-provider-aws/examples/eks-getting-started/
-
     terraform destroy
