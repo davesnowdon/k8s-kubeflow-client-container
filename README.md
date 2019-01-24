@@ -15,7 +15,7 @@ Set the following environment variables to the AWS credentials you are going to 
 * AWS_KUBE_SECRET_ACCESS_KEY
 * AWS_KUBE_DEFAULT_REGION
 
-OPTIONAL: Build the container by running. The run-container.sh script will use the latest container hosted on hub.docker.com so you don't need to build a local copy of the container unless you want to.
+OPTIONAL: The run-container.sh script will use the latest container hosted on hub.docker.com so you don't need to build a local copy of the container unless you want to. Running make-container.sh will download the required components (terraform, kubectl, ksonnet & kubeflow) and build the docker image.
 
     ./make-container.sh
 
@@ -108,4 +108,4 @@ Run proxy for dashboard
 
 Port forward for kubeflow UI (needs kubectl 1.13.0 or greater)
 
-    kubectl port-forward svc/ambassador --address 0.0.0.0 -n kubeflow 8080:80
+    kubectl port-forward svc/ambassador --address 0.0.0.0 -n kubeflow 8080:80 &
