@@ -90,6 +90,13 @@ Port forward for kubeflow UI (needs kubectl 1.13.0 or greater)
 
     kubectl port-forward svc/ambassador --address 0.0.0.0 -n kubeflow 8080:80 &
 
+## Work around kubeflow 0.4.0 bug
+There is a bug in kubeflow 0.4.0 which means that if you are not deploying in a Google GKE environment then the pytorch-operator pod is not installed. This means that the studyjob-controller pod will fail to start and you won't be able to use katib even if you only want to use tensorflow.
+
+The workaround is to manually install pytorch-operator
+
+    cd .../kubeflow/ks_app
+    ks apply default -c pytorch-operator
 
 # Commands each time container is started
 Unless you take steps to save the output you'lkll need to do the following each time you start the docker container.
@@ -109,3 +116,13 @@ Run proxy for dashboard
 Port forward for kubeflow UI (needs kubectl 1.13.0 or greater)
 
     kubectl port-forward svc/ambassador --address 0.0.0.0 -n kubeflow 8080:80 &
+
+# Scaling the cluster
+The terraform EKS example creates an auto-scaling group with 2 worker nodes. If you need more nodes you can edit the auto scaling group via the autoscaling group section in the AWS EC2 console and set the desired number of workers. You may also need to adjust the max number of machines too. As new machines are created they will automatically be added to the cluster. Likewise reducing the desired number of workers will automatically destroy nodes and remove them from the kubernetes cluster without needing any manual steps.
+
+# Teardown
+To remove all resources you can use `terraform destroy`
+
+    cd /opt/data/terraform-provider-aws/examples/eks-getting-started/
+
+    terraform destroy
